@@ -4,6 +4,8 @@ import LandingPage from "./pages/LandingPage.jsx";
 import Login from "./pages/Login.jsx";
 import PassReset from "./pages/PassReset.jsx";
 import AdminDash from "./pages/AdminDash";
+import HRDash from "./pages/HRDash";
+import EmployeeDash from "./pages/EmployeeDash";
 
 
 const App = () => {
@@ -18,6 +20,8 @@ const App = () => {
 
       {/* Dashoboard routes */}
       <Route path="/admin/dashboard" element={<AdminDash />} />
+       <Route path="/hr/dashboard" element={<HRDash />} />
+        <Route path="/employee/dashboard" element={<EmployeeDash />} />
     </Routes>
   );
 };
