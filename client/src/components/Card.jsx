@@ -1,40 +1,22 @@
 import React from "react";
 
-const Card = ({
-  title,
-  value,
-  color = "blue",
-  icon: Icon,
-  children,
-  onClick,
-  className = "",
-}) => {
-  const colorMap = {
-    blue: "text-blue-600",
-    red: "text-red-600",
-    green: "text-green-600",
-    yellow: "text-yellow-600",
-    purple: "text-purple-600",
-    gray: "text-gray-600",
+const Card = ({ title, value, icon: Icon, color = "red" }) => {
+  const colorClasses = {
+    red: "bg-red-100 text-red-700 border-red-300",
+    blue: "bg-blue-100 text-blue-700 border-blue-300",
+    green: "bg-green-100 text-green-700 border-green-300",
+    yellow: "bg-yellow-100 text-yellow-700 border-yellow-300",
   };
 
   return (
     <div
-      onClick={onClick}
-      className={`p-5 bg-white rounded-xl shadow hover:shadow-lg transition-shadow duration-300 cursor-pointer ${className}`}
+      className={`flex items-center justify-between p-4 rounded-xl shadow-sm border ${colorClasses[color]}`}
     >
-      <div className="flex items-center justify-between mb-3">
-        {title && <h2 className="text-gray-600 font-medium">{title}</h2>}
-        {Icon && <Icon size={22} className={`${colorMap[color]}`} />}
+      <div>
+        <h3 className="text-sm font-semibold">{title}</h3>
+        <p className="text-2xl font-bold">{value}</p>
       </div>
-
-      {value && (
-        <h3 className={`text-2xl font-semibold ${colorMap[color]}`}>
-          {value}
-        </h3>
-      )}
-
-      {children && <div className="mt-3">{children}</div>}
+      {Icon && <Icon size={32} className="opacity-70" />}
     </div>
   );
 };

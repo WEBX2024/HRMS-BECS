@@ -1,20 +1,24 @@
 import React from "react";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/Sidebar/Sidebar";
 import Topbar from "../components/Topbar";
+import Card from "../components/Card";
 
-const DashboardLayout = ({ role, children }) => {
+const DashboardLayout = ({ role, cards = [], children }) => {
   return (
     <div className="flex min-h-screen bg-gray-50">
-      {/* Sidebar — changes based on role */}
       <Sidebar role={role} />
-
-      {/* Main area */}
       <div className="flex flex-col flex-1">
-        {/* Topbar */}
-        <Topbar role={role} />
-
-        {/* Dynamic Dashboard Content */}
-        <main className="flex-1 p-6 overflow-y-auto">{children}</main>
+        <Topbar />
+        <main className="p-6 overflow-y-auto flex-1">
+          {cards.length > 0 && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+              {cards.map((card, idx) => (
+                <Card key={idx} {...card} />
+              ))}
+            </div>
+          )}
+          {children}
+        </main>
       </div>
     </div>
   );
